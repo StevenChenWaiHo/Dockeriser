@@ -43,10 +43,7 @@ function append_plugin_docker_string() {
         return;
     fi
 
-    # Check if Dockerfile exists, if not create one
-    if [ -f "docker-compose.yml" ]; then
-        echo "docker file (docker-compose.yml) already exists try deleting it before running this script"
-    fi
+
 
     # Create a basic Dockerfile (you might need to adjust this based on repo needs)
     get_plugin_docker_string
@@ -55,9 +52,15 @@ function append_plugin_docker_string() {
 
 # MAIN STARTS HERE
 
+# Check if Dockerfile exists, if not create one
+if [ -f "docker-compose.yml" ]; then
+    echo "docker file (docker-compose.yml) already exists try deleting it before running this script"
+    exit 1;
+fi
+
 DOCKERFILE_PLUGIN_STRING=""
 
-NODE_FOLDERS=($(find . -name "package.json" -exec dirname {} \;))
+NODE_FOLDERS=($(find . -name "package.json" -not -path '*/node_modules/*' -exec dirname {} \;))
 
 CURRENT_REPO=$(pwd)
 
