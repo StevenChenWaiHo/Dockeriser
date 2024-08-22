@@ -73,4 +73,4 @@ for FOLDER_PATH in "${NODE_FOLDERS[@]}"; do
 done
 
 echo "Creating Dockerfile"
-echo -e "$DOCKERFILE_HEADER_STRING\n$DOCKERFILE_PLUGIN_STRING" > docker-compose2.yml
+echo -e "$DOCKERFILE_HEADER_STRING\n$DOCKERFILE_PLUGIN_STRING" > docker-compose.yml
