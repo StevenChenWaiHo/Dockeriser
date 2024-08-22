@@ -17,7 +17,7 @@ function get_plugin_docker_string () {
         - ./${FOLDER_PATH#./}:/$FOLDER_NAME
       user: app
       command: bash -c '''
-          cd /${FOLDER_PATH#./}
+          cd /$FOLDER_NAME
           && composer update --no-interaction
           && composer install --no-interaction
           && composer dumpautoload --optimize
