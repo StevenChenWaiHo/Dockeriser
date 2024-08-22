@@ -44,8 +44,6 @@ function append_plugin_docker_string() {
         return;
     fi
 
-    echo "Detected Node.js project"
-
     # Check if Dockerfile exists, if not create one
     if [ -f "docker-compose2.yml" ]; then
         echo "docker file (docker-compose.yml) already exists try deleting it before running this script"
