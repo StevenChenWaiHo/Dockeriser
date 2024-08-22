@@ -40,20 +40,17 @@ function append_plugin_docker_string() {
     # Check if there is a package.json file
     if [ ! -f "package.json" ]; then
         echo "$FOLDER_NAME directory is not a valid Node.js project (Cannot find the package.json file)"; 
-        cd ..
         return;
     fi
 
     # Check if Dockerfile exists, if not create one
-    if [ -f "docker-compose2.yml" ]; then
+    if [ -f "docker-compose.yml" ]; then
         echo "docker file (docker-compose.yml) already exists try deleting it before running this script"
     fi
 
     # Create a basic Dockerfile (you might need to adjust this based on repo needs)
     get_plugin_docker_string
     DOCKERFILE_PLUGIN_STRING+="$PLUGIN_STRING\n\n"
-
-    cd ..
 }
 
 # MAIN STARTS HERE
