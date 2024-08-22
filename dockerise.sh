@@ -14,10 +14,10 @@ function get_plugin_docker_string () {
       image: pugpig/wpdev:v0
       restart: "no"
       volumes:
-        - ./$FOLDER_PATH:/$FOLDER_PATH
+        - ./${FOLDER_PATH#./}:/$FOLDER_NAME
       user: app
       command: bash -c '''
-          cd /$FOLDER_PATH
+          cd /${FOLDER_PATH#./}
           && composer update --no-interaction
           && composer install --no-interaction
           && composer dumpautoload --optimize
@@ -65,8 +65,6 @@ DOCKERFILE_PLUGIN_STRING=""
 NODE_FOLDERS=($(find . -name "package.json" -exec dirname {} \;))
 
 CURRENT_REPO=$(pwd)
-
-echo $NODE_FOLDERS
 
 for FOLDER_PATH in "${NODE_FOLDERS[@]}"; do
     FOLDER_NAME=$(basename $FOLDER_PATH)
