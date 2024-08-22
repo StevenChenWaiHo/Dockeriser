@@ -53,7 +53,7 @@ function append_plugin_docker_string() {
 
     # Create a basic Dockerfile (you might need to adjust this based on repo needs)
     get_plugin_docker_string
-    DOCKERFILE_PLUGIN_STRING+="$PLUGIN_STRING\n"
+    DOCKERFILE_PLUGIN_STRING+="$PLUGIN_STRING\n\n"
 
     cd ..
 }
